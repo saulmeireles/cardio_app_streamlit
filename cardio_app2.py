@@ -37,7 +37,7 @@ st.subheader("Características do Paciente")
 user_input = st.sidebar.text_input("Digite seu nome")
 
 st.write("Paciente: ", user_input)
-st.image('cardio_img.png')
+#strest.image('cardio_img.png')
 
 # Dados do paciente
 def user_input_features():
@@ -78,7 +78,7 @@ user_input_varieables = user_input_features()
 # Carregando os dados
 cardio = pd.read_csv('cardio_app2.csv')
 cardio_x = cardio.drop(columns=['cardio'], axis = 1)
-df = pd.concat([user_input_varieables, cardio_x], axis = 0)
+#df = pd.concat([user_input_varieables, cardio_x], axis = 0)
 
 # Tabela com os dados do usuario
 st.subheader('Dados do paciente')
@@ -86,18 +86,18 @@ st.write(user_input_varieables)
 
 
 # Função para construção do gráfico
-def impPlot(imp, name):
-    figure = px.bar(imp,
-                    x=imp.values,
-                    y=imp.keys(), labels = {'x':'Importance Value', 'index':'Columns'},
-                    text=np.round(imp.values, 2),
-                    title=name + ' Feature Selection Plot',
-                    width=900, height=600)
-    figure.update_layout({
-        'plot_bgcolor': 'rgba(0, 0, 0, 0)',
-        'paper_bgcolor': 'rgba(0, 0, 0, 0)',
-    })
-    st.plotly_chart(figure)
+#def impPlot(imp, name):
+#    figure = px.bar(imp,
+#                    x=imp.values,
+#                    y=imp.keys(), labels = {'x':'Importance Value', 'index':'Columns'},
+#                    text=np.round(imp.values, 2),
+#                    title=name + ' Feature Selection Plot',
+#                    width=900, height=600)
+#    figure.update_layout({
+#        'plot_bgcolor': 'rgba(0, 0, 0, 0)',
+#        'paper_bgcolor': 'rgba(0, 0, 0, 0)',
+#    })
+#    st.plotly_chart(figure)
 
 
 # Carregando o modelo
@@ -105,8 +105,8 @@ modelo_clf = pickle.load(open('model_randomforest.pkl', 'rb'))
 
 
 # Gráfico feat_importances
-feat_importances = pd.Series(modelo_clf.feature_importances_, index=cardio_x.columns).sort_values(ascending=True)
-st.write(impPlot(feat_importances, 'Random Forest Classifier'))
+#feat_importances = pd.Series(modelo_clf.feature_importances_, index=cardio_x.columns).sort_values(ascending=True)
+#st.write(impPlot(feat_importances, 'Random Forest Classifier'))
 
 # Previsão
 prediction = modelo_clf.predict(user_input_varieables)
