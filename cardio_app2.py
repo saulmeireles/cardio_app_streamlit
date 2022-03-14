@@ -51,7 +51,7 @@ def user_input_features():
         cholesterol = st.sidebar.selectbox("Colesterol", [1,2 ,3], 1)
         gluc = st.sidebar.selectbox("Glicose",[1,2, 3] ,1)
         smoke = st.sidebar.selectbox("Fumante", [0, 1], 0)
-        alco = st.sidebar.selectbox("Bebida Alcoolica", [0 ,1], 0)
+        alco = st.sidebar.selectbox("Bebida Alcoólica", [0 ,1], 0)
         active = st.sidebar.selectbox("Praticante de atividade física", [0, 1], 0)
     
         st.form_submit_button('Fazer previsão')
@@ -65,7 +65,7 @@ def user_input_features():
                 "Colesterol": cholesterol,
                 "Glicose": gluc,
                 "Fumante": smoke,
-                "Bebida Alcoolica": alco,
+                "Bebida Alcoólica": alco,
                 "Praticante de atividade física": active}
 
     features = pd.DataFrame(user_data, index = [0])
