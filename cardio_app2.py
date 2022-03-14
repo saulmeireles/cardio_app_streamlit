@@ -8,6 +8,7 @@ import os
 from joblib import dump, load
 import sklearn
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn import metrics
 import pickle
 
@@ -37,7 +38,7 @@ st.subheader("Características do Paciente")
 user_input = st.sidebar.text_input("Digite seu nome")
 
 st.write("Paciente: ", user_input)
-#strest.image('cardio_img.png')
+st.image('cardio_img.png')
 
 # Dados do paciente
 def user_input_features():
@@ -101,16 +102,16 @@ st.write(user_input_varieables)
 
 
 # Carregando o modelo
-modelo_clf = pickle.load(open('model_randomforest.pkl', 'rb'))
+modeloKNN = pickle.load(open('modelKNN.pkl', 'rb'))
 
 
 # Gráfico feat_importances
-#feat_importances = pd.Series(modelo_clf.feature_importances_, index=cardio_x.columns).sort_values(ascending=True)
-#st.write(impPlot(feat_importances, 'Random Forest Classifier'))
+#feat_importances = pd.Series(modeloKNN.feature_importances_, index=cardio_x.columns).sort_values(ascending=True)
+#st.write(impPlot(feat_importances, 'KNN'))
 
 # Previsão
-prediction = modelo_clf.predict(user_input_varieables)
-prediction_proba = modelo_clf.predict_proba(user_input_varieables)
+prediction = modeloKNN.predict(user_input_varieables)
+prediction_proba = modeloKNN.predict_proba(user_input_varieables)
 
 st.subheader("Previsão: ")
 st.write("""
